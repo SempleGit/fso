@@ -1,31 +1,19 @@
 import Header from "./Header"
 import Content from "./Content"
 import Total from "./Total"
+import { useState } from 'react'
 
 const App = () => {
-  const course = {
-    name: 'Half Stack application development',
-    parts: [
-      {
-        name: 'Fundamentals of React',
-        exercises: 10
-      },
-      {
-        name: 'Using props to pass data',
-        exercises: 7
-      },
-      {
-        name: 'State of a component',
-        exercises: 14
-      }
-    ]
-  }
+  const [counter, setCounter] = useState(0)
+
+  const handleClick = () => setCounter(counter + 1)
+  const resetCounter = () => setCounter(0)
 
   return (
     <div>
-      <Header course={course} />
-      <Content parts={course.parts} />
-      <Total parts={course.parts} />
+      <button onClick={handleClick}>Count</button>
+      <div>{counter}</div>
+      <button onClick={resetCounter}>Reset</button>
     </div>
   )
 }
