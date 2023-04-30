@@ -2,8 +2,7 @@ import Stat from "./Stat";
 import Percentage from "./Percentage.js";
 
 const Statistics = ({ stats }) => {
-  const [good, neutral, bad] = stats;
-  const total = stats.reduce((a, c) => a + c);
+  const [good, neutral, bad, total] = stats;
   return <div>
     <h2>Statistics</h2>
     <Stat stat="Good" count={good} />
