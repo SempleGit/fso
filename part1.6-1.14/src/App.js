@@ -9,20 +9,31 @@ const App = () => {
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
   const [total, setTotal] = useState(0);
+  const [average, setAverage] = useState(0);
 
   const handleGood = () => {
-    setGood(good + 1);
-    setTotal(total + 1);
+    const newGood = good + 1;
+    setGood(newGood);
+    handleAggregates(newGood, neutral, bad);
   }
 
   const handleNeutral = () => {
-    setNeutral(neutral + 1);
-    setTotal(total + 1);
+    const newNeutral = neutral + 1;
+    setNeutral(newNeutral);
+    handleAggregates(good, newNeutral, bad);
   }
 
   const handleBad = () => {
-    setBad(bad + 1);
-    setTotal(total + 1);
+    const newBad = bad + 1;
+    setBad(newBad);
+    handleAggregates(good, neutral, newBad);
+  }
+
+  const handleAggregates = (good, neutral, bad) => {
+    const newTotal = total + 1;
+    const newAverage = (good * 1 + neutral * 0 + bad * -1) / newTotal;
+    setTotal(newTotal);
+    setAverage(newAverage);
   }
 
   return (
@@ -31,7 +42,7 @@ const App = () => {
       <Button text="good" click={handleGood} />
       <Button text="neutral" click={handleNeutral} />
       <Button text="bad" click={handleBad} />
-      {total > 0 ? <Statistics stats={[good, neutral, bad, total]} /> : <p>No Feedback Given</p>}
+      {total > 0 ? <Statistics stats={[good, neutral, bad, total, average]} /> : <p>No Feedback Given</p>}
     </div>
   )
 }

@@ -1,15 +1,15 @@
-import Stat from "./Stat";
+import StatisticsLine from "./StatisticsLine";
 import Percentage from "./Percentage.js";
 
 const Statistics = ({ stats }) => {
-  const [good, neutral, bad, total] = stats;
+  const [good, neutral, bad, total, average] = stats;
   return <div>
     <h2>Statistics</h2>
-    <Stat stat="Good" count={good} />
-    <Stat stat="Neutral" count={neutral} />
-    <Stat stat="Bad" count={bad} />
-    <Stat stat="All" count={total} />
-    <Stat stat="Average" count={(good * 1 + neutral * 0 + bad * -1) / total} />
+    <StatisticsLine stat="Good" count={good} />
+    <StatisticsLine stat="Neutral" count={neutral} />
+    <StatisticsLine stat="Bad" count={bad} />
+    <StatisticsLine stat="All" count={total} />
+    <StatisticsLine stat="Average" count={average} />
     <Percentage text="Positive" per={good} total={total} />
   </div>
 }
