@@ -1,5 +1,8 @@
 const StatisticsLine = ({ stat, count }) => {
-  return <p>{stat}: {count}</p>
+  return <tr>
+    <td>{stat}</td>
+    <td>{count}</td>
+  </tr>
 }
 
 export default StatisticsLine
